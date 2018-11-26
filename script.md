@@ -124,3 +124,70 @@ With the event handler wired up we now need to say what to do when that button i
 1. Increment the score when the middle LED is lit
 2. End the game
 
+*[How do you suppose we can do one thing if a condition is met or another if it isn't?]*
+
+We need to turn our attention back to the Logic group. In there is a variant of the `if/then` block we used earlier called `if/then/else`. This block does exactly what it sounds like; when a condition is true the first part runs otherwise the other part runs. Go ahead and drag the block into our `on button A pressed` handler block.
+
+Just as before, we need to specify what condition we're looking for. If the middle LED is on we want to increment the score so we'll express that in code with a comparison expression which we can find in the Logic group.
+
+Drag the `0 = 0` block into the `if/then/else` expression slot. This block has slots for two values. One of them should be set to `2` which indicates the middle just like we said in the initialization. *[What should the other value be?]*
+
+For the other value we need to find the `sprite`'s `x` (horizontal) value so we can compare it to the other value in the expression block. Drag the `sprite x` value block into the other value slot. Your expression should now read `if sprite x = 2`.
+
+This means that when the `sprite`'s `x` value is equal to `2` one thing (not yet defined) will happen otherwise something else will happen.
+
+As we've already said, when the condition is met we want to increment the score otherwise we'll end the game. Let's go ahead and drag the `change score by 1` and `game over` blocks from the Game group into the corresponding spots.
+
+# Testing our Program
+
+All of the code for our game is now in place so when we run it we should see our game behave just like the example! Try it!
+
+If everything is correct the light should bounce back and forth across the screen and if we press `A` (on the emulator) when the middle LED is on the lights should display a pattern. Otherwise we'll see a different pattern followed by a game over message and our score.
+
+Some interesting things to note here are that we can restart the game by pressing `A` and `B` at the same time. (A "fake" button will appear in the emulator on game over.) Starting a new game also resets the score. *[How does it reset if we didn't initialize it?]*
+
+The reason we get a new score without explicitly initializing it in `on start` is that the micro:bit's Game functionality handles that for us! We could track it separately but there's no need. Managing it ourselves would unnecessarily add complexity and result in additional work.
+
+# Below the Surface
+
+Remember earlier on when I said we'd come back to the JavaScript tab at the top of the window? Now it's time to click it.
+
+All of the blocks we've dragged to the canvas are merely graphical representations of text-based code! In this case our blocks are building JavaScript. (Kind of - there are differences in here from "real" JavaScript, it's actually TypeScript.)
+
+Let's look at the lines of code shown in the editor and see how they related back to the blocks.
+
+Line 1 tells the program to create a variable named `sprite` of type `game.LedSprite` and initializes it to `null` which indicates that the name `sprite` is available for use a bit later
+
+Lines 2 - 8 wire up the `onButtonPressed` event handler. `onButtonPressed` is a function on the micro:bit `input` object which accepts two parameters - the first indicating which button to respond to, and the second being a function for what to do when that button is pressed. The inner code should look very familiar since it reads almost identical to the blocks we dropped on the canvas.
+
+Line 9 is responsible for initializing the `Sprite` object by creating it at location `2, 2` and assigning it to the `sprite` variable declared on line 1.
+
+Finally we see the `forever` loop on lines 10 - 14. This should also look very familiar since it's responsible for moving the sprite, bouncing, and pausing.
+
+# Customizing the JavaScript
+
+One of the great things about micro:bits is how they let us transition from block-based programming to text-based programming. We've just seen how our blocks are represented in TypeScript, err... JavaScript but we can do more than that by editing our JavaScript and even defining our own blocks! Let's do another refactoring of our code and move some of the logic to custom blocks but by actually writing the code to do it!
+
+When we changed over to JavaScript view you may have noticed a button labelled "Explorer" appear under the emulator. Clicking this button expands a menu which shows the files required for our program to work.
+
+Currently all of our code is stored in the file named `main.ts`. To prevent the block editor from treating our custom code as JavaScript blocks we'll work in a separate file.
+
+To create the new file click the `+` button on the `Explorer` line. This will first tell you that the file named `custom.ts` is going to be added to the project. Go ahead and confirm the action and observe the new file now exists. micro:bit uses this name internally so it can't be changed nor can we add other files. *[Feel free to browse some of the other files to get a feel for the program structure]*
+
+With that file in place we're ready to add some custom code! Rather than making you type the whole thing go ahead and copy the contents of [custom.ts][1] and paste it into the file in the browser. Note that while this code is similar to what we've already seen it has been modified to behave better as custom micro:bit code.
+
+Without going into too much detail over the code, it defines a namespace (*custom group*) that *exports* two custom functions. The first function, `updateDisplay` encapsulates the logic for the bouncing LED and delay. The second function, `incrementOrEnd` handles the decision for what to do when `A` is pressed. All of the other (green) text are metadata and micro:bit directives that control how the items are displayed in the block editor.
+
+# Using the Custom Code
+
+We pasted in the custom code rather than truly refactoring so we need to go back and update our existing code to use the new blocks. Because the editor sometimes has trouble picking up changes to custom code go ahead and refresh the page. This should take you back to the block editor, and, if all is correct you should now see an orange group named "Reaction Time Game" in at the bottom of the toolbox. Click on that and you should see our two custom functions listed with descriptive text!
+
+To use the blocks we need to clear out what's currently in the `forever` and `on button A...` blocks. We can then drag the custom `Move sprite...` and `Check sprite...` blocks into their respective container blocks.
+
+Finally, run (or restart) the program and see how it still behaves exactly as before!
+
+# Wrapping Up
+
+
+
+[1]: custom.ts
