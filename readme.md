@@ -195,7 +195,7 @@ Pay attention to how we've named these functions. Both names describe what the f
 
 # Using the Custom Code
 
-We pasted in the custom code but haven't yet updated our original code. We now need to go back and update that to use the new blocks. Click back to the blocks tab. This should take you back to the block editor, and, if all is correct you should now see an orange group named "Reaction Time Game" in orange at the bottom of the toolbox. Click on that and you should see our two custom functions listed with descriptive text! (The editor sometimes has trouble picking up changes to custom code go ahead and refresh the page if you don't see the group right away.)
+We pasted in the custom code but haven't yet updated our original code. We now need to go back and update that to use the new blocks. Click back to the blocks tab. This should take you back to the block editor, and, if all is correct you should now see an orange group named "Reaction Time Game" at the bottom of the toolbox. Click on that and you should see our two custom functions listed with descriptive text! (The editor sometimes has trouble picking up changes to custom code go ahead and refresh the page if you don't see the group right away.)
 
 To use the blocks we need to clear out what's currently in the `forever` and `on button A...` blocks. We can then drag the custom `Move sprite...` and `Check sprite...` blocks into their respective container blocks. The program won't work until you tell the new block which `Sprite` to manage so drag the `sprite` block from the Variables group to both blocks as well.
 
