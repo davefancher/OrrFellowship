@@ -54,7 +54,7 @@ If you recall the earlier demo of the finished game, we saw that there's a singl
 
 1. Click the `Variables` toolbox item, then click the `Make a Variable` button.
 2. Enter the name `sprite` in the dialog box.
-3. Click "OK" or press ente/return
+3. Click "OK" or press enter/return
 
 This adds a few blocks to the Variables section. First is a box with rounded corners that simply says `sprite` and has a dropdown arrow. Next are two interlocking rectangles that allow us to either set `sprite` to a specific value or change it by some value.
 
@@ -175,7 +175,7 @@ Finally we see the `forever` loop on lines 10 - 14. This should also look very f
 
 # Customizing the JavaScript
 
-Most programmers work this way - with text-based languages. We learn the data structures and behaviors provided by the libraries we use and connect them by hand. Trust me, typing `if (sprite.get(LedSpriteProperty.X) == 2)...` is far preferrable to digging through menus to drag and drop blocks onto a canvas. Block-languages are a great way to learn, though!
+Most programmers work this way - with text-based languages in specialized text editors such as Visual Studio, Visual Studio Code, Sublime, or a plethora of others. We learn the data structures and behaviors provided by the libraries we use and connect them by hand. Trust me, typing `if (sprite.get(LedSpriteProperty.X) == 2)...` is far preferrable to digging through menus to drag and drop blocks onto a canvas. Block-languages are a great way to learn, though!
 
 One of the great things about micro:bits is how they let us transition from block-based programming to text-based programming. We've just seen how our blocks are represented in TypeScript, err... JavaScript but we can do more than that by editing the code. For micro:bit we can even define our own blocks! Let's do another refactoring of our code and move some of the logic to custom blocks but by actually writing the code to do it!
 
@@ -195,7 +195,7 @@ Pay attention to how we've named these functions. Both names describe what the f
 
 # Using the Custom Code
 
-We pasted in the custom code but haven't yet updated our original code. We now need to go back and update that to use the new blocks. Click back to the blocks tab. This should take you back to the block editor, and, if all is correct you should now see an orange group named "Reaction Time Game" in at the bottom of the toolbox. Click on that and you should see our two custom functions listed with descriptive text! (The editor sometimes has trouble picking up changes to custom code go ahead and refresh the page if you don't see the group right away.)
+We pasted in the custom code but haven't yet updated our original code. We now need to go back and update that to use the new blocks. Click back to the blocks tab. This should take you back to the block editor, and, if all is correct you should now see an orange group named "Reaction Time Game" in orange at the bottom of the toolbox. Click on that and you should see our two custom functions listed with descriptive text! (The editor sometimes has trouble picking up changes to custom code go ahead and refresh the page if you don't see the group right away.)
 
 To use the blocks we need to clear out what's currently in the `forever` and `on button A...` blocks. We can then drag the custom `Move sprite...` and `Check sprite...` blocks into their respective container blocks. The program won't work until you tell the new block which `Sprite` to manage so drag the `sprite` block from the Variables group to both blocks as well.
 
