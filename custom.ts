@@ -1,14 +1,15 @@
 //% block="Reaction Time Game" color=#FF7F00
 namespace reactionTimeGame {
     /**
-     * Causes the move forward after a specified amount of time
+     * Causes the move forward after a specified amount of time. If the sprite is
+     * against the edge it will bounce.
      * @param sprite the active sprite
      * @param delay the length of time to wait before moving the sprite
      */
-    //% blockId=rtg_update_display
-    //% block="Move sprite %sprite|after %delay (ms) delay"
+    //% blockId=rtg_bounce_sprite
+    //% block="Move sprite forward and bounce %sprite|after %delay (ms) delay"
     //% delay.shadow=timePicker
-    export function updateDisplay(sprite: game.LedSprite, delay: number = 200): void {
+    export function bounceSprite(sprite: game.LedSprite, delay: number = 200): void {
         if (!sprite) return
 
         sprite.move(1)
